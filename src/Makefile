@@ -21,16 +21,16 @@ TARGET = greasy-bin
 
 ##### Filter out inncessary objects to avoid compiling those files
 ifeq ($(ENGINE), MPI) 
-OBJECTS := $(filter-out basicengine.o threadengine.o slurmengine.o ,$(OBJECTS))
+OBJECTS := $(filter-out threadengine.o slurmengine.o ,$(OBJECTS))
 endif
 ifeq ($(ENGINE), BASIC) 
 OBJECTS := $(filter-out mpiengine.o threadengine.o slurmengine.o ,$(OBJECTS))
 endif
 ifeq ($(ENGINE), THREAD) 
-OBJECTS := $(filter-out basicengine.o mpiengine.o slurmengine.o ,$(OBJECTS))
+OBJECTS := $(filter-out mpiengine.o slurmengine.o ,$(OBJECTS))
 endif
 ifeq ($(ENGINE), SLURM) 
-OBJECTS := $(filter-out basicengine.o mpiengine.o threadengine.o ,$(OBJECTS))
+OBJECTS := $(filter-out mpiengine.o threadengine.o ,$(OBJECTS))
 endif
 
 all: $(TARGET)
